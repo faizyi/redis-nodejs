@@ -9,5 +9,6 @@ COPY server.js server.js
 
 
 RUN npm install
+EXPOSE 5002
 
 ENTRYPOINT ["node", "server.js"]
