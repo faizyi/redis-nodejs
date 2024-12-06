@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    ports:
+      - "5002:5002"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+  redis:
+    image: redis/redis-stack:latest # Use Redis Stack for GUI + Redis functionality
+    container_name: redis-stack
+    ports:
+      - "6379:6379"
+      - "8001:8001"

@@ -5,6 +5,7 @@ const app = express();
 
 app.get("/", async (req, res)=>{
     const cacheData = await client.get("todos");
+    console.log(cacheData)
     if(cacheData) return res.json(JSON.parse(cacheData));
     const {data} = await axios.get("https://jsonplaceholder.typicode.com/todos");
     await client.set("todos", JSON.stringify(data));
